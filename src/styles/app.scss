@@ -1,12 +1,10 @@
-@import '../base/settings';
+@import './base/settings';
 @import 'antd/es/layout/style';
 @import 'antd/es/menu/style';
 @import 'antd/es/Breadcrumb/style';
 
-.logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
+.app-layout {
+    min-height: 100vh;
 }
 
 .site-layout .site-layout-background {

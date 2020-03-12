@@ -6,7 +6,7 @@ import Checkbox from 'antd/es/checkbox';
 import UserOutlined from '@ant-design/icons/UserOutlined';
 import LockOutlined from '@ant-design/icons/LockOutlined';
 
-import '../styles/login/index.scss';
+import '../styles/login.scss';
 
 const Login = () => {
     const onFinish = values => {
@@ -40,17 +40,13 @@ const Login = () => {
                 <Form.Item name="remember" valuePropName="checked" noStyle>
                   <Checkbox>Remember me</Checkbox>
                 </Form.Item>
-        
-                <a className="login-form-forgot" href="/forgotPassword">
-                  Forgot password
-                </a>
               </Form.Item>
         
               <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in
                 </Button>
-                Or <a href="/register">register now!</a>
+                &nbsp;Or <a href="/register">register now!</a>
               </Form.Item>
             </Form>
         </div>

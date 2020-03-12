@@ -1,0 +1,50 @@
+@import './base/settings';
+@import 'antd/es/tabs/style';
+
+.welcome-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex: 0 0 auto;
+    background-color: #001428;
+}
+
+.ww-left--pane {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    flex: 0 0 auto;
+}
+
+.ww-left--pane .logo {
+    height: $l-size;
+    width: $xl-size;
+}
+
+.ww-right--pane {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    background-color: white;
+    padding: $md-size;
+}
+
+.rp-title--wrapper {
+    margin-bottom: $l-size;
+}
+
+.right-pane--title {
+    color: #001428;
+    font-size: $md-size;
+    font-weight: bold;
+}
+
+.rp-login--wrapper {
+    height: 100%;
+}
+
+.ww-footer {
+    position: bottom;
+    height: $md-size;
+    text-align: center;
+}
+
