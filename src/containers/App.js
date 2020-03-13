@@ -2,21 +2,30 @@ import React, { Component } from 'react';
 import Layout from 'antd/es/layout';
 import Menu from 'antd/es/menu';
 import Breadcrumb from 'antd/es/breadcrumb';
-import DesktopOutlined from '@ant-design/icons/DesktopOutlined';
-import PieChartOutlined from '@ant-design/icons/PieChartOutlined';
-import FileOutlined from '@ant-design/icons/FileOutlined';
-import TeamOutlined from '@ant-design/icons/TeamOutlined';
-import UserOutlined from '@ant-design/icons/UserOutlined';
 
 import '../styles/app.scss';
 
+import AppstoreOutlined from "@ant-design/icons/AppstoreOutlined";
+import TeamOutlined from '@ant-design/icons/TeamOutlined';
+import IdcardOutlined from "@ant-design/icons/IdcardOutlined";
+
+import { withRouter } from 'react-router-dom';
+import ApiToken from '../ApiToken';
+
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
+const apiToken = new ApiToken();
 
 class App extends Component {
     state = {
         collapsed: false
     };
+
+    componentDidMount = () => {
+      if(!apiToken.getToken()) {
+        this.props.history.push("/welcome");
+      }
+    }
 
     onCollapse = collapsed => {
         this.setState({
@@ -31,41 +40,32 @@ class App extends Component {
                   <div className="logo" />
                   <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                     <Menu.Item key="1">
-                      <PieChartOutlined />
-                      <span>Option 1</span>
+                      <IdcardOutlined />
+                      <span>Profile</span>
                     </Menu.Item>
-                    <Menu.Item key="2">
-                      <DesktopOutlined />
-                      <span>Option 2</span>
-                    </Menu.Item>
-                    <SubMenu
-                      key="sub1"
+                    <SubMenu key="2"
                       title={
                         <span>
-                          <UserOutlined />
-                          <span>User</span>
+                          <TeamOutlined />
+                          <span>IAM</span>
                         </span>
                       }
                     >
-                      <Menu.Item key="3">Tom</Menu.Item>
-                      <Menu.Item key="4">Bill</Menu.Item>
-                      <Menu.Item key="5">Alex</Menu.Item>
+                      <Menu.Item key="3">Users</Menu.Item>
+                      <Menu.Item key="4">Roles</Menu.Item>
+                      <Menu.Item key="5">Permissions</Menu.Item>
                     </SubMenu>
                     <SubMenu
                       key="sub2"
                       title={
                         <span>
-                          <TeamOutlined />
-                          <span>Team</span>
+                          <AppstoreOutlined />
+                          <span>Inventory</span>
                         </span>
                       }
                     >
-                      <Menu.Item key="6">Team 1</Menu.Item>
-                      <Menu.Item key="8">Team 2</Menu.Item>
+                      <Menu.Item key="6">Products</Menu.Item>
                     </SubMenu>
-                    <Menu.Item key="9">
-                      <FileOutlined />
-                    </Menu.Item>
                   </Menu>
                 </Sider>
                 <Layout className="site-layout">
@@ -86,4 +86,4 @@ class App extends Component {
     }
 };
 
-export default App;
+export default withRouter(App);
